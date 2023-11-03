@@ -48,26 +48,34 @@ export const useAppointmentStore = defineStore({
                 console.log("ERR ",error)
             })
         },
-        addBookings() {
-            axios.post(url, {})
+        addBookings(booking: Appointment) {
+            axios.post(url, booking)
             .then((response) => {
-                console.log(response.data)
+                if(typeof response.data != 'string'){
+                    setTimeout(() => {
+                        this.appointments = response.data
+                    }, 500);
+                }
             })
             .catch((error) => {
                 console.log("ERR ",error)
             })
         },
-        updateBooking() {
-            axios.put(url, {})
+        updateBooking(booking: Appointment) {
+            axios.put(url, booking)
             .then((response) => {
-                console.log(response.data)
+                if(typeof response.data != 'string'){
+                    setTimeout(() => {
+                        this.appointments = response.data
+                    }, 500);
+                }
             })
             .catch((error) => {
                 console.log("ERR ",error)
             })
         },
-        deleteBooking() {
-            axios.delete(url, {})
+        deleteBooking(bookingId: number) {
+            axios.delete(`${url}?id=${bookingId}`)
             .then((response) => {
                 console.log(response.data)
             })

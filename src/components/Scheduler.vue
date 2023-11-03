@@ -52,19 +52,6 @@ mounted: function () {
     "week"
   );
 
-  scheduler.attachEvent("onClick", function (id:number, e: any,){
-       //any custom logic here
-       console.log("ID", id)
-       console.log("Ev", e)
-
-      //  scheduler.addEvent({
-      //     start_date: "02-10-2023 19:00",
-      //     end_date:   "02-10-2023 19:30",
-      //     text:   "Meeting",
-      //     author: "John",
-      // });
-       return true;
-  });
   scheduler.parse(this.$props.events);
 
 },

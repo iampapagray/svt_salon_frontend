@@ -50,7 +50,7 @@ const form = useForm({
 });
 
 const onSubmit = form.handleSubmit((values) => {
-  console.log("Form submitted!", values);
+  // console.log("Form submitted!", values);
 
   const scheduler: SchedulerStatic = (window as any).scheduler
   const st = `${format(values.appointmentDate, 'yyyy-MM-dd')} ${values.fromTime}`
@@ -59,7 +59,7 @@ const onSubmit = form.handleSubmit((values) => {
     start_date: st,
     end_date: en,
     text:   values.description,
-    holder: values.name,
+    author: values.name,
   });
 
   form.resetForm()
@@ -93,7 +93,7 @@ const onSubmit = form.handleSubmit((values) => {
     </FormField>
 
     <!-- Date -->
-    <FormField v-slot="{ componentField, value }" name="appointmentDate">
+    <FormField v-slot="{ componentField, value, handleInput }" name="appointmentDate">
       <FormItem class="flex flex-col">
         <FormLabel>Appointment Date</FormLabel>
         <Popover>
@@ -113,19 +113,16 @@ const onSubmit = form.handleSubmit((values) => {
               </Button>
             </FormControl>
           </PopoverTrigger>
-          <PopoverContent class="flex w-auto flex-col space-y-2 p-2">
+          <PopoverContent class="flex w-auto flex-col space-y-2 p-2 ">
             <Select
               @update:model-value="
-                (val) => {
-                  // ts
-                  value = addDays(new Date(), parseInt(val));
-                }
+                (val) => handleInput(addDays(new Date(), parseInt(val)))
               "
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select" />
+                <SelectValue placeholder="Select preset date" />
               </SelectTrigger>
-              <SelectContent position="popper" class="bg-gray-500">
+              <SelectContent position="item-aligned" class="bg-gray-300">
                 <SelectItem value="0"> Today </SelectItem>
                 <SelectItem value="1"> Tomorrow </SelectItem>
                 <SelectItem value="3"> In 3 days </SelectItem>
@@ -152,7 +149,7 @@ const onSubmit = form.handleSubmit((values) => {
                 <SelectValue placeholder="Select start time" />
               </SelectTrigger>
             </FormControl>
-            <SelectContent >
+            <SelectContent class="bg-gray-300">
               <SelectGroup>
                   <SelectItem 
                       v-for="(option, index) in store.timeOptions" 
@@ -177,7 +174,7 @@ const onSubmit = form.handleSubmit((values) => {
                 <SelectValue placeholder="Select end time" />
               </SelectTrigger>
             </FormControl>
-            <SelectContent >
+            <SelectContent class="bg-gray-300">
               <SelectGroup>
                   <SelectItem 
                       v-for="(option, index) in store.timeOptions" 

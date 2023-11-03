@@ -19,7 +19,7 @@ import AppointmentForm  from "@/components/AppointmentForm.vue"
         Add Appointment
       </Button>
     </DialogTrigger>
-    <DialogContent class="sm:max-w-[425px]">
+    <DialogContent class="sm:max-w-[425px] bg-gray-300">
       <DialogHeader>
         <DialogTitle>Appointment</DialogTitle>
         <DialogDescription>

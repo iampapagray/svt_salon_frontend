@@ -16,15 +16,25 @@ const logEventUpdate = (
   ev: Appointment
 ) => {
   // Handle the event update here
-  console.log("Event ID:", id);
-  console.log("Event MODE:", mode);
-  console.log("Event Event:", ev);
+
+  switch (mode) {
+    case 'create':
+      store.addBookings(ev);
+      break;
+    case 'update':
+      store.updateBooking(ev)
+      break;
+    case 'delete':
+    store.deleteBooking(id)
+      break;
+    default:
+      break;
+  }
 };
 </script>
 
 <template>
   <div class="mx-auto max-w-7xl md:p-10">
-    {{ appointments }}
     <div
       className="mt-8 w-full flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0"
     >
