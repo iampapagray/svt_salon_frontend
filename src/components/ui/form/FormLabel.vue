@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { useAttrs } from 'vue'
-import { Label, type LabelProps } from 'radix-vue'
+import { Label } from 'radix-vue'
+// import { Label, type LabelProps } from 'radix-vue'
 import { useFormField } from './useFormField'
 import { cn } from '@/lib/utils'
 
 defineOptions({
   inheritAttrs: false,
 })
-const props = defineProps<LabelProps>()
+// const props = defineProps<LabelProps>()
 
 const { error, formItemId } = useFormField()
 const { class: className, ...rest } = useAttrs()

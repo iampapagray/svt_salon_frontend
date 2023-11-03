@@ -1,7 +1,6 @@
 import { generateTimeIntervals } from "@/lib/utils";
 import { defineStore } from "pinia";
 import axios from "axios";
-import { addHours } from "date-fns";
 
 interface AppointmentState {
     openTime: string
