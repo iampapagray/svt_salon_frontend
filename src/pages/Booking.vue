@@ -15,17 +15,27 @@ const logEventUpdate = (id: number, mode: "create" | "update" | "delete", ev: Ap
     // Handle the event update here
     switch (mode) {
         case "create":
-            store.addBookings(ev).catch((err) => {
-                toast({
-                    title: "Oops...",
-                    description: err,
+            store
+                .addBookings(ev)
+                .then(() => {
+                    toast({
+                        title: "Great!",
+                        description: "Your appointment has been booked.",
+                    })
                 })
-            })
+                .catch((err) => {
+                    toast({
+                        title: "Oops...",
+                        variant: "destructive",
+                        description: err,
+                    })
+                })
             break
         case "update":
             store.updateBooking(ev).catch((err) => {
                 toast({
                     title: "Oops...",
+                    variant: "destructive",
                     description: err,
                 })
             })
@@ -34,6 +44,7 @@ const logEventUpdate = (id: number, mode: "create" | "update" | "delete", ev: Ap
             store.deleteBooking(id).catch((err) => {
                 toast({
                     title: "Oops...",
+                    variant: "destructive",
                     description: err,
                 })
             })
