@@ -62,6 +62,11 @@ Install dependencies. I use pnpm here but feel free to use either npm, yarn or b
 ```
 pnpm install
 ```
+Copy the content of the .env.example file to a .env file
+
+```
+cp .env.example .env
+```
 Run the dev script. This will get the api running and listening on your local machine
 
 ```
