@@ -3,24 +3,40 @@ import Scheduler from "@/components/Scheduler.vue"
 import AddAppointment from "@/components/AddAppointment.vue"
 import { useAppointmentStore } from "@/store/appointment"
 import { storeToRefs } from "pinia"
+import { useToast } from "@/components/ui/toast/use-toast"
 
 const store = useAppointmentStore()
 store.initDefaults()
 
 const { appointments, isReady } = storeToRefs(store)
+const { toast } = useToast()
 
 const logEventUpdate = (id: number, mode: "create" | "update" | "delete", ev: Appointment) => {
     // Handle the event update here
-
     switch (mode) {
         case "create":
-            store.addBookings(ev)
+            store.addBookings(ev).catch((err) => {
+                toast({
+                    title: "Oops...",
+                    description: err,
+                })
+            })
             break
         case "update":
-            store.updateBooking(ev)
+            store.updateBooking(ev).catch((err) => {
+                toast({
+                    title: "Oops...",
+                    description: err,
+                })
+            })
             break
         case "delete":
-            store.deleteBooking(id)
+            store.deleteBooking(id).catch((err) => {
+                toast({
+                    title: "Oops...",
+                    description: err,
+                })
+            })
             break
         default:
             break

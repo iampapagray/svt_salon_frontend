@@ -1,6 +1,6 @@
 import { generateTimeIntervals } from "@/lib/utils"
 import { defineStore } from "pinia"
-import axios from "axios"
+import { cancelAppointment, fetchAppointments, modifyAppointment, storeAppointment } from "@/lib/http"
 
 interface AppointmentState {
     openTime: string
@@ -9,8 +9,6 @@ interface AppointmentState {
     timeOptions: string[]
     isReady: boolean
 }
-
-const url = "http://localhost:4005"
 
 export const useAppointmentStore = defineStore({
     id: "appointment",
@@ -26,64 +24,83 @@ export const useAppointmentStore = defineStore({
     getters: {},
     actions: {
         initDefaults() {
-            // generate time options
             this.timeOptions = generateTimeIntervals(this.openTime, this.closeTime)
 
             this.getAllBookings()
         },
-        getAllBookings() {
-            axios
-                .get(url)
-                .then((response) => {
-                    if (typeof response.data != "string") {
-                        setTimeout(() => {
-                            this.appointments = response.data
+        async getAllBookings() {
+            return new Promise((resolve, reject) => {
+                fetchAppointments()
+                    .then((data) => {
+                        if (typeof data != "string") {
+                            setTimeout(() => {
+                                this.appointments = data
+                                this.isReady = true
+                                resolve("ok")
+                            }, 1000)
+                        } else {
                             this.isReady = true
-                        }, 1000)
-                    }
-                })
-                .catch((error) => {
-                    console.log("ERR ", error)
-                    this.isReady = true
-                })
+                            reject(data)
+                        }
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            })
         },
-        addBookings(booking: Appointment) {
-            axios
-                .post(url, booking)
-                .then((response) => {
-                    if (typeof response.data != "string") {
-                        setTimeout(() => {
-                            this.appointments = response.data
-                        }, 500)
-                    }
-                })
-                .catch((error) => {
-                    console.log("ERR ", error)
-                })
+        async addBookings(booking: Appointment) {
+            return new Promise((resolve, reject) => {
+                storeAppointment(booking)
+                    .then((data) => {
+                        if (typeof data != "string") {
+                            setTimeout(() => {
+                                this.appointments = data
+                                resolve("ok")
+                            }, 1000)
+                        } else {
+                            reject(data)
+                        }
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            })
         },
-        updateBooking(booking: Appointment) {
-            axios
-                .put(url, booking)
-                .then((response) => {
-                    if (typeof response.data != "string") {
-                        setTimeout(() => {
-                            this.appointments = response.data
-                        }, 500)
-                    }
-                })
-                .catch((error) => {
-                    console.log("ERR ", error)
-                })
+        async updateBooking(booking: Appointment) {
+            return new Promise((resolve, reject) => {
+                modifyAppointment(booking)
+                    .then((data) => {
+                        if (typeof data != "string") {
+                            setTimeout(() => {
+                                this.appointments = data
+                                resolve("ok")
+                            }, 1000)
+                        } else {
+                            reject(data)
+                        }
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            })
         },
-        deleteBooking(bookingId: number) {
-            axios
-                .delete(`${url}?id=${bookingId}`)
-                .then((response) => {
-                    console.log(response.data)
-                })
-                .catch((error) => {
-                    console.log("ERR ", error)
-                })
+        async deleteBooking(bookingId: number) {
+            return new Promise((resolve, reject) => {
+                cancelAppointment(bookingId)
+                    .then((data) => {
+                        if (typeof data != "string") {
+                            setTimeout(() => {
+                                this.appointments = data
+                                resolve("ok")
+                            }, 1000)
+                        } else {
+                            reject(data)
+                        }
+                    })
+                    .catch((error) => {
+                        reject(error)
+                    })
+            })
         },
     },
 })
