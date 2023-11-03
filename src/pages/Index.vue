@@ -22,7 +22,7 @@ import {Button} from '@/components/ui/button'
         <router-link to="/bookings" class="mt-4">
             
             <Button variant="default" class="rounded-full">
-              Get started <ArrowRight className="ml-4 h-4 w-4" />
+              Book now <ArrowRight className="ml-4 h-4 w-4" />
             </Button>
         </router-link>
     </div>

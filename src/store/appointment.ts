@@ -35,7 +35,6 @@ export const useAppointmentStore = defineStore({
         getAllBookings() {
             axios.get(url)
             .then((response) => {
-                console.log(response.data)
                 if(typeof response.data != 'string'){
                     setTimeout(() => {
                         this.appointments = response.data

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// import { ref } from "vue";
+
 import Scheduler from "@/components/Scheduler.vue";
 import AddAppointment from "@/components/AddAppointment.vue";
 import { useAppointmentStore } from "@/store/appointment";

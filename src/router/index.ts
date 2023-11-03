@@ -28,6 +28,4 @@ const router = createRouter({
     routes,
 });
 
-// router.beforeEach(async (to, from) => {});
-
 export { router };
