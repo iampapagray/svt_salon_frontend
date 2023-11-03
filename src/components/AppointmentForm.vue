@@ -53,8 +53,8 @@ const onSubmit = form.handleSubmit((values) => {
   console.log("Form submitted!", values);
 
   const scheduler: SchedulerStatic = (window as any).scheduler
-  const st = `${format(values.appointmentDate, 'dd-MM-yyyy')} ${values.fromTime}`
-  const en = `${format(values.appointmentDate, 'dd-MM-yyyy')} ${values.toTime}`
+  const st = `${format(values.appointmentDate, 'yyyy-MM-dd')} ${values.fromTime}`
+  const en = `${format(values.appointmentDate, 'yyyy-MM-dd')} ${values.toTime}`
   scheduler.addEvent({
     start_date: st,
     end_date: en,

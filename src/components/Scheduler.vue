@@ -13,7 +13,7 @@ export default defineComponent({
 name: "scheduler",
 props: {
   events: {
-    type: Array,
+    type: Array<Appointment>,
     default() {
       return []
     },
@@ -57,13 +57,12 @@ mounted: function () {
        console.log("ID", id)
        console.log("Ev", e)
 
-       scheduler.addEvent({
-          start_date: "02-10-2023 19:00",
-          end_date:   "02-10-2023 19:30",
-          text:   "Meeting",
-          holder: "John", // userdata
-          room:   "5"     // userdata
-      });
+      //  scheduler.addEvent({
+      //     start_date: "02-10-2023 19:00",
+      //     end_date:   "02-10-2023 19:30",
+      //     text:   "Meeting",
+      //     author: "John",
+      // });
        return true;
   });
   scheduler.parse(this.$props.events);
