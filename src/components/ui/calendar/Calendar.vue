@@ -62,7 +62,7 @@ onMounted(async () => {
       </button>
     </div>
 
-    <DatePicker
+    <VDatePicker
       ref="datePicker"
       v-model="modelValue"
       v-bind="$attrs"
