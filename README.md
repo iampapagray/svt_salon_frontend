@@ -1,18 +1,92 @@
-# Vue 3 + TypeScript + Vite
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+</p>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<h3 align="center">Booking & Management Frontend</h3>
 
-## Recommended IDE Setup
+<div align="center">
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/iampapagray/svt_salon_frontend/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/iampapagray/svt_salon_frontend/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Type Support For `.vue` Imports in TS
+</div>
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+---
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+<p align="center"> This is a booking and management system.
+    <br> 
+</p>
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 📝 Table of Contents
+
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+## 🧐 About <a name = "about"></a>
+
+A frontend booking and management system for a fictitious hair salon.
+
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+What things you need to install the software and how to install them.
+
+```
+1. Node
+2. npm | pnpm | yarn | bun
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running.
+
+Clone the repository to your local machine
+
+```
+git clone git@github.com:iampapagray/svt_salon_frontend.git
+```
+
+Install dependencies. I use pnpm here but feel free to use either npm, yarn or bun
+
+```
+pnpm install
+```
+Run the dev script. This will get the api running and listening on your local machine
+
+```
+pnpm run dev
+```
+
+## 🎈 Usage <a name="usage"></a>
+
+To use this, get the backend of the project and run both simultaneously.
+Then open your browser to the specified location
+
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Vite](https://expressjs.com/) - Frontend Tooling
+- [VueJs](https://nodejs.org/en/) - JS Framework
+- [Typescript](https://www.typescriptlang.org/) - Typed Language
+- [TailwindCss](https://www.typescriptlang.org/) - Styling Library
+- [Pinia](https://www.typescriptlang.org/) - State Management
+- [dhtmlx](https://www.typescriptlang.org/) - UI Library for calendar view
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@iampapgray](https://github.com/iampapagray) - Test Work
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+
+- Hat tip to anyone whose code was used
