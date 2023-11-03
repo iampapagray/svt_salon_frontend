@@ -45,6 +45,7 @@ export const useAppointmentStore = defineStore({
             })
             .catch((error) => {
                 console.log("ERR ",error)
+                this.isReady = true
             })
         },
         addBookings(booking: Appointment) {
