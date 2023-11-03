@@ -1,8 +1,6 @@
 import { generateTimeIntervals } from "@/lib/utils";
 import { defineStore } from "pinia";
-
-
-interface Appointment {}
+import axios from "axios";
 
 interface AppointmentState {
     openTime: string
@@ -10,6 +8,8 @@ interface AppointmentState {
     appointments: Appointment[]
     timeOptions: string[]
 }
+
+const url = "http://localhost:4005"
 
 export const useAppointmentStore = defineStore({
     id: "appointment",
@@ -22,12 +22,48 @@ export const useAppointmentStore = defineStore({
         }
     },
     getters: {
-
     },
     actions: {
         initDefaults() {
             // generate time options
             this.timeOptions = generateTimeIntervals(this.openTime, this.closeTime)
-        }
+        },
+        getAllBookings() {
+            axios.get(url)
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log("ERR ",error)
+            })
+        },
+        addBookings() {
+            axios.post(url, {})
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log("ERR ",error)
+            })
+        },
+        updateBooking() {
+            axios.put(url, {})
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log("ERR ",error)
+            })
+        },
+        deleteBooking() {
+            axios.delete(url, {})
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log("ERR ",error)
+            })
+        },
+
     }
 })
