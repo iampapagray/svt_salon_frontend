@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const url = process.env.BACKEND_URL ?? "http://localhost:4005"
+const url = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:4005"
 
 export const fetchAppointments = async (): Promise<Appointment[] | string> => {
     return axios
